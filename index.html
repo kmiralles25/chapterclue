@@ -10,60 +10,32 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
---plum:#2d1b4e;
---deep:#1a0f30;
---lavender:#c4b0e8;
---lilac:#e8e0f7;
---blush:#fdf5ff;
---rose:#d4a0c0;
---gold:#c9a84c;
---gold-light:#f0dfa0;
---muted:#7a6a94;
---border:#d8cff0;
---white:#ffffff;
---soft:#f7f2ff;
+--plum:#2d1b4e;--deep:#1a0f30;--lavender:#c4b0e8;--lilac:#e8e0f7;
+--blush:#fdf5ff;--gold:#c9a84c;--gold-light:#f0dfa0;--muted:#7a6a94;
+--border:#d8cff0;--white:#ffffff;--soft:#f7f2ff;
 }
 body{background:var(--blush);color:var(--plum);font-family:'Nunito',sans-serif;overflow-x:hidden}
-
 nav{background:var(--deep);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
 .nav-logo{font-family:'Italiana',serif;color:var(--gold-light);font-size:1.4rem;letter-spacing:0.08em}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:#b8a8d8;font-size:0.75rem;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
-.nav-links a:hover{color:var(--gold-light)}
-.nav-cta{background:var(--gold);color:var(--deep);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.45rem 1.1rem;border-radius:20px;text-decoration:none;font-weight:600}
 
-.hero{background:var(--deep);min-height:90vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero{background:var(--deep);min-height:88vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-deco{position:absolute;font-family:'Cormorant Garamond',serif;font-size:clamp(10rem,18vw,18rem);color:rgba(196,176,232,0.04);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;font-style:italic}
 .hero-left{padding:5rem 3rem 4rem 4.5rem;display:flex;flex-direction:column;justify-content:center;z-index:2}
 .hero-eyebrow{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem}
 .hero-eyebrow::before{content:'✦';font-size:0.6rem}
 .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,5.5vw,5rem);color:var(--white);line-height:1.05;margin-bottom:1.5rem;font-weight:400}
 .hero-title em{font-style:italic;color:var(--lavender)}
-.hero-sub{color:#9888b8;font-size:0.95rem;line-height:1.8;max-width:380px;margin-bottom:2.5rem;font-weight:300}
-.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
-.btn-primary{background:var(--gold);color:var(--deep);padding:0.75rem 1.75rem;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-radius:25px;font-weight:600;transition:opacity 0.2s}
-.btn-primary:hover{opacity:0.88}
-.btn-ghost{color:var(--lavender);font-size:0.8rem;text-decoration:none;letter-spacing:0.05em;border-bottom:1px solid #4a3a6a;padding-bottom:2px}
-
-.hero-deco{position:absolute;font-family:'Cormorant Garamond',serif;font-size:clamp(10rem,18vw,18rem);color:rgba(196,176,232,0.04);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;font-style:italic}
+.hero-sub{color:#9888b8;font-size:0.95rem;line-height:1.8;max-width:380px;font-weight:300}
 
 .hero-right-inner{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;height:100%;gap:2rem;padding:4rem 3rem 4rem 2rem}
 .stat-row{display:flex;gap:2.5rem}
 .stat-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--lavender);line-height:1;font-weight:600}
 .stat-label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#5a4a7a;margin-top:0.2rem}
 
-.featured-card{background:#231640;border:1px solid #3d2d68;border-radius:16px;padding:2rem;width:100%;max-width:340px;position:relative;overflow:hidden}
-.featured-card::after{content:'';position:absolute;top:0;right:0;width:80px;height:80px;background:radial-gradient(circle,rgba(196,176,232,0.12),transparent 70%);pointer-events:none}
+.featured-card{background:#231640;border:1px solid #3d2d68;border-radius:16px;padding:2rem;width:100%;max-width:340px}
 .featured-ribbon{display:inline-block;background:var(--gold);color:var(--deep);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.25rem 0.75rem;border-radius:20px;font-weight:700;margin-bottom:1rem}
 .featured-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--white);line-height:1.25;margin-bottom:0.6rem;font-weight:600}
-.featured-excerpt{font-size:0.82rem;color:#7a6a9a;line-height:1.7;margin-bottom:1.25rem;font-weight:300}
-.featured-link{color:var(--gold);font-size:0.75rem;letter-spacing:0.08em;text-decoration:none;text-transform:uppercase;font-weight:600}
-.featured-link::after{content:' →'}
-
-.section-divider{background:var(--lilac);padding:1rem 4rem;display:flex;gap:2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.divider-scroll{display:flex;gap:2rem;overflow-x:auto;scrollbar-width:none;align-items:center}
-.divider-scroll::-webkit-scrollbar{display:none}
-.divider-tag{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);white-space:nowrap;cursor:pointer;padding:0.35rem 1rem;border-radius:20px;transition:all 0.2s;font-weight:500}
-.divider-tag:hover,.divider-tag.active{background:var(--plum);color:var(--white)}
+.featured-excerpt{font-size:0.82rem;color:#7a6a9a;line-height:1.7;font-weight:300}
 
 .main-grid{padding:3.5rem 4rem;display:grid;grid-template-columns:1fr 320px;gap:3.5rem;max-width:1300px;margin:0 auto}
 
@@ -72,95 +44,59 @@ nav{background:var(--deep);padding:0 2.5rem;display:flex;align-items:center;just
 
 .post-card{display:grid;grid-template-columns:100px 1fr;gap:1.25rem;padding-bottom:2rem;margin-bottom:2rem;border-bottom:1px solid var(--border)}
 .post-card:last-of-type{border-bottom:none}
-
-/* Book cover — works for both <img> and fallback <div> */
 .book-cover{width:100px;height:140px;border-radius:8px;object-fit:cover;display:block;flex-shrink:0}
 div.book-cover{display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:0.6rem;text-align:center;padding:0.6rem;line-height:1.4;color:#c4b0e8}
-.cover-1{background:#3d1f5c}
-.cover-2{background:#1f3d5c}
-.cover-3{background:#3d1f3d}
+.cover-1{background:#1f3d5c}.cover-2{background:#3d1f5c}
 
 .post-meta{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;flex-wrap:wrap}
 .post-category{font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--plum);background:var(--lilac);padding:0.2rem 0.65rem;border-radius:20px;font-weight:600}
 .post-date{font-size:0.7rem;color:var(--muted)}
-.post-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--plum);line-height:1.3;margin-bottom:0.4rem;cursor:pointer;font-weight:600}
-.post-title:hover{color:#7f77dd}
-.post-excerpt{font-size:0.83rem;color:var(--muted);line-height:1.7;margin-bottom:0.75rem;font-weight:300}
+.post-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--plum);line-height:1.3;margin-bottom:0.4rem;font-weight:600}
+.post-excerpt{font-size:0.83rem;color:var(--muted);line-height:1.7;font-weight:300}
 .post-rating{display:flex;gap:2px;margin-bottom:0.5rem}
 .star{color:var(--gold);font-size:0.85rem}
 .star.empty{color:var(--border)}
-.read-more{font-size:0.72rem;color:#7f77dd;text-decoration:none;letter-spacing:0.05em;font-weight:600}
-.read-more::after{content:' →'}
 
 .quote-block{background:var(--lilac);border-left:3px solid var(--gold);padding:2rem;margin:2.5rem 0;border-radius:0 12px 12px 0}
-.quote-text{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--plum);line-height:1.75;margin-bottom:0.6rem}
+.quote-text{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--plum);line-height:1.75;margin-bottom:0.6rem}
 .quote-attr{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
 
 .sidebar-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.5rem}
 .reading-now-card{background:var(--plum);border-radius:16px;padding:1.5rem;margin-bottom:1.5rem}
 .reading-now-card .section-label{color:var(--gold-light)}
 .reading-now-card .section-label::after{background:#4a3a6a}
-.rn-book{display:flex;gap:1rem;align-items:flex-start}
 
-/* Currently reading cover */
-.rn-cover{width:55px;height:78px;border-radius:6px;object-fit:cover;flex-shrink:0}
-div.rn-cover{background:#3d2d6a;display:flex;align-items:center;justify-content:center;font-size:0.45rem;text-align:center;color:var(--lavender);font-family:'Cormorant Garamond',serif;padding:0.3rem;line-height:1.3}
-
-.rn-title{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--white);margin-bottom:0.2rem;line-height:1.3;font-weight:600}
-.rn-author{font-size:0.7rem;color:#9888b8;margin-bottom:0.75rem}
-.progress-bar{height:4px;background:#3a2a5a;border-radius:4px;overflow:hidden}
-.progress-fill{height:100%;background:var(--gold);border-radius:4px;width:68%}
-.progress-label{font-size:0.62rem;color:#6a5a8a;margin-top:0.35rem}
+.currently-reading-list{display:flex;flex-direction:column;gap:1rem}
+.cr-item{display:flex;gap:0.75rem;align-items:flex-start}
+.cr-cover{width:42px;height:58px;border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.4rem;text-align:center;color:var(--lavender);font-family:'Cormorant Garamond',serif;padding:0.25rem;line-height:1.3}
+.cr-c1{background:#1f2d4a}.cr-c2{background:#2a1f4a}.cr-c3{background:#1f3a2a}
+.cr-title{font-family:'Cormorant Garamond',serif;font-size:0.9rem;color:var(--white);margin-bottom:0.1rem;line-height:1.3;font-weight:600}
+.cr-author{font-size:0.68rem;color:#9888b8}
+.cr-type{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-top:0.2rem;font-weight:600}
 
 .reading-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-radius:12px;overflow:hidden;margin-bottom:1.5rem}
 .rs-item{background:var(--soft);padding:1rem;text-align:center}
 .rs-num{font-family:'Cormorant Garamond',serif;font-size:1.85rem;color:var(--plum);line-height:1;font-weight:600}
 .rs-label{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:0.25rem}
 
-.categories-list{list-style:none}
-.categories-list li{display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0;border-bottom:1px solid var(--border);cursor:pointer}
-.categories-list li:last-child{border-bottom:none}
-.cat-name{font-size:0.84rem;color:var(--plum);transition:color 0.2s;font-weight:500}
-.categories-list li:hover .cat-name{color:#7f77dd}
-.cat-count{font-size:0.7rem;color:var(--muted);background:var(--lilac);padding:0.1rem 0.55rem;border-radius:20px;font-weight:600}
-
-.recent-reads{display:flex;flex-direction:column;gap:1rem}
+.recent-reads{display:flex;flex-direction:column;gap:0.85rem}
 .rr-item{display:flex;gap:0.75rem;align-items:flex-start}
-
-/* Recent reads mini covers */
-.rr-cover{width:34px;height:48px;border-radius:4px;object-fit:cover;flex-shrink:0}
-div.rr-cover{display:block}
-.rr-c1{background:#5c2d4a}
-.rr-c2{background:#2d3d5c}
-.rr-c3{background:#3d2d5c}
-.rr-c4{background:#4a2d2d}
-
+.rr-cover{width:34px;height:48px;border-radius:4px;flex-shrink:0}
+.rr-c1{background:#1f3d5c}.rr-c2{background:#3d2052}
 .rr-title{font-size:0.8rem;font-weight:600;color:var(--plum);line-height:1.3;margin-bottom:0.1rem}
 .rr-author{font-size:0.68rem;color:var(--muted)}
-.rr-stars{color:var(--gold);font-size:0.65rem;margin-top:0.2rem}
-
-.chronicle-section{background:var(--plum);padding:4rem}
-.chronicle-inner{max-width:1300px;margin:0 auto}
-.chronicle-section .section-label{color:var(--gold-light)}
-.chronicle-section .section-label::after{background:#4a3a6a}
-.chronicle-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:2rem}
-.chronicle-card{background:#231640;border:1px solid #3d2d68;border-radius:14px;padding:1.5rem;cursor:pointer;transition:border-color 0.2s,transform 0.2s}
-.chronicle-card:hover{border-color:var(--gold);transform:translateY(-3px)}
-.cc-icon{font-size:1.6rem;margin-bottom:1rem}
-.cc-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem;font-weight:600}
-.cc-desc{font-size:0.76rem;color:#7a6a9a;line-height:1.6;font-weight:300}
-.cc-link{font-size:0.65rem;color:var(--gold);margin-top:0.75rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600}
+.rr-type{font-size:0.6rem;color:var(--gold);font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
+.rr-stars{color:var(--gold);font-size:0.65rem;margin-top:0.15rem}
 
 footer{background:#110a20;padding:3rem 4rem;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:3rem}
-.footer-logo{font-family:'Italiana',serif;color:var(--gold-light);font-size:1.4rem;display:block;margin-bottom:0.75rem;letter-spacing:0.08em}
+.footer-logo{font-family:'Italiana',serif;color:var(--gold-light);font-size:1.4rem;display:block;margin-bottom:0.75rem}
 .footer-tagline{font-size:0.83rem;color:#4a3a6a;font-style:italic;line-height:1.7;font-family:'Cormorant Garamond',serif}
 .footer-heading{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:#4a3a6a;margin-bottom:1rem;font-weight:600}
 .footer-links{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
-.footer-links a{color:#6a5a8a;font-size:0.82rem;text-decoration:none;transition:color 0.2s}
-.footer-links a:hover{color:var(--gold-light)}
+.footer-links li{font-size:0.82rem;color:#6a5a8a}
 .footer-copy{color:#2d2048;font-size:0.68rem;margin-top:1rem}
 .social-links{display:flex;gap:0.6rem;margin-top:1rem}
-.social-link{padding:0.35rem 0.9rem;border:1px solid #3d2d68;border-radius:20px;display:flex;align-items:center;justify-content:center;color:#6a5a8a;font-size:0.7rem;text-decoration:none;transition:all 0.2s;font-weight:600;letter-spacing:0.05em}
+.social-link{padding:0.35rem 0.9rem;border:1px solid #3d2d68;border-radius:20px;color:#6a5a8a;font-size:0.7rem;text-decoration:none;font-weight:600;transition:all 0.2s}
 .social-link:hover{border-color:var(--gold);color:var(--gold)}
 </style>
 </head>
@@ -168,13 +104,6 @@ footer{background:#110a20;padding:3rem 4rem;display:grid;grid-template-columns:1
 
 <nav>
   <span class="nav-logo">Chapter & Clue</span>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="#">The Clue Chronicle</a></li>
-    <li><a href="#">Reader's Report</a></li>
-    <li><a href="#">Secret Scrolls</a></li>
-  </ul>
-  <a href="#" class="nav-cta">Subscribe ✦</a>
 </nav>
 
 <section class="hero">
@@ -183,85 +112,53 @@ footer{background:#110a20;padding:3rem 4rem;display:grid;grid-template-columns:1
     <div class="hero-eyebrow">A Literary Corner</div>
     <h1 class="hero-title">Unraveling<br><em>stories</em> across<br>every genre</h1>
     <p class="hero-sub">Part reading journal, part curiosity cabinet. Every book is a case to be opened — every idea a clue worth following.</p>
-    <div class="hero-actions">
-      <a href="#" class="btn-primary">✦ Explore the Archive</a>
-      <a href="#" class="btn-ghost">Latest Review →</a>
-    </div>
   </div>
   <div class="hero-right-inner">
     <div class="stat-row">
-      <div class="stat"><div class="stat-num">13</div><div class="stat-label">Books in '25</div></div>
-      <div class="stat"><div class="stat-num">5</div><div class="stat-label">Sections</div></div>
+      <div class="stat"><div class="stat-num">8</div><div class="stat-label">Read in '26</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Reading Now</div></div>
       <div class="stat"><div class="stat-num">∞</div><div class="stat-label">TBR Pile</div></div>
     </div>
     <div class="featured-card">
       <div class="featured-ribbon">✦ Latest Review</div>
-      <div class="featured-title">Escape Clause</div>
-      <p class="featured-excerpt">A case that begins with two missing tigers unravels into a chase filled with danger, blurred justice, and quiet tension.</p>
-      <a href="#" class="featured-link">Open the Chapter</a>
+      <div class="featured-title">Project Hail Mary</div>
+      <p class="featured-excerpt">The movie brought me to the book, but the book made me fall in love. Andy Weir has a gift for making complex science feel accessible — and Ray Porter's narration makes it unforgettable.</p>
     </div>
   </div>
 </section>
 
-<div class="section-divider">
-  <div class="divider-scroll">
-    <span class="divider-tag active">All</span>
-    <span class="divider-tag">Book Reviews</span>
-    <span class="divider-tag">Anime</span>
-    <span class="divider-tag">Film & TV</span>
-    <span class="divider-tag">Travel</span>
-    <span class="divider-tag">Shelf Rankings</span>
-  </div>
-</div>
-
 <div class="main-grid">
   <main>
-    <div class="section-label">Recent Posts</div>
+    <div class="section-label">Recent Reviews</div>
 
-    <!-- POST 1: Escape Clause -->
-    <!-- To add image: save book cover as images/escape-clause.jpg -->
-    <!-- Then change the line below to: <img src="images/escape-clause.jpg" alt="Escape Clause" class="book-cover"> -->
+    <!-- POST 1: Project Hail Mary -->
+    <!-- To add cover image: save as images/project-hail-mary.jpg -->
+    <!-- Then replace the div below with: <img src="images/project-hail-mary.jpg" alt="Project Hail Mary" class="book-cover"> -->
     <div class="post-card">
-      <div class="book-cover cover-1">Escape Clause</div>
+      <div class="book-cover cover-1">Project Hail Mary</div>
       <div>
-        <div class="post-meta"><span class="post-category">Book Review</span><span class="post-date">May 2026</span></div>
-        <h2 class="post-title">Escape Clause — A chase with teeth and quiet dread</h2>
+        <div class="post-meta"><span class="post-category">Book</span><span class="post-date">2026</span></div>
+        <h2 class="post-title">Project Hail Mary — Andy Weir</h2>
         <div class="post-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span></div>
-        <p class="post-excerpt">Two missing tigers. One relentless investigator. This entry in the Virgil Flowers series rewards patience — the tension builds slowly, but it bites.</p>
-        <a href="#" class="read-more">Read the Review</a>
+        <p class="post-excerpt">The movie brought me to the book, but the book made me fall in love. Andy Weir has a gift for making complex science feel accessible and thrilling — and when you pair that with Ray Porter's audiobook narration, it becomes something else entirely. Porter is hands down the best narrator I've encountered; he brings every character and concept to life in a way that makes even the densest scientific moments a pleasure to follow. The book also fills in details the movie couldn't, which made the whole experience richer. A genuine page-turner that works whether you've seen the film or not.</p>
       </div>
     </div>
 
-    <!-- POST 2: The Thursday Murder Club -->
-    <!-- To add image: save book cover as images/thursday-murder-club.jpg -->
-    <!-- Then change the line below to: <img src="images/thursday-murder-club.jpg" alt="The Thursday Murder Club" class="book-cover"> -->
+    <!-- POST 2: Wisteria: Wand and Sword -->
+    <!-- To add cover image: save as images/wisteria-wand-and-sword.jpg -->
+    <!-- Then replace the div below with: <img src="images/wisteria-wand-and-sword.jpg" alt="Wisteria: Wand and Sword" class="book-cover"> -->
     <div class="post-card">
-      <div class="book-cover cover-2">The Thursday Murder Club</div>
+      <div class="book-cover cover-2">Wisteria: Wand & Sword</div>
       <div>
-        <div class="post-meta"><span class="post-category">Book Review</span><span class="post-date">Apr 2026</span></div>
-        <h2 class="post-title">The Thursday Murder Club — Wickedly charming</h2>
-        <div class="post-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="post-excerpt">Four retirees, one cold case, and more wit per page than most thrillers manage in a whole series. Osman is simply a delight.</p>
-        <a href="#" class="read-more">Read the Review</a>
-      </div>
-    </div>
-
-    <!-- POST 3: The Diplomat -->
-    <!-- To add image: save a show poster as images/the-diplomat-s3.jpg -->
-    <!-- Then change the line below to: <img src="images/the-diplomat-s3.jpg" alt="The Diplomat Season 3" class="book-cover"> -->
-    <div class="post-card">
-      <div class="book-cover cover-3">The Diplomat S3</div>
-      <div>
-        <div class="post-meta"><span class="post-category">Film & TV</span><span class="post-date">Apr 2026</span></div>
-        <h2 class="post-title">The Diplomat Season 3 — A cliffhanger that broke me</h2>
-        <div class="post-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="post-excerpt">Politics, power, and a finale that should be illegal. Season 3 cements this as one of the sharpest political dramas in years.</p>
-        <a href="#" class="read-more">Read the Review</a>
+        <div class="post-meta"><span class="post-category">Manga</span><span class="post-date">2026</span></div>
+        <h2 class="post-title">Wisteria: Wand and Sword</h2>
+        <div class="post-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span></div>
+        <p class="post-excerpt">I came for the anime and stayed for everything else. When the story's weekly pace became unbearable, I turned to the light novels — and promptly caught up to the latest volume, which means I'm back to waiting all over again. The premise hooked me immediately: a boy with zero magical ability navigating a world that prizes magic above all else. What sets it apart is that he doesn't sulk about it — he channels his exceptional swordsmanship toward a singular, ambitious goal: reaching Elfaria, a Magia Vander of the highest order. The art is stunning, the world-building is rich, and the story keeps you rooting for him every step of the way.</p>
       </div>
     </div>
 
     <div class="quote-block">
-      <div class="quote-text">"Book gift shopping = accidental self-gifting. Sometimes you just want to reread a classic."</div>
+      <div class="quote-text">"I came for the anime and stayed for everything else. Sometimes a story just grabs you and doesn't let go."</div>
       <div class="quote-attr">— Kristine, Chapter & Clue</div>
     </div>
   </main>
@@ -269,77 +166,83 @@ footer{background:#110a20;padding:3rem 4rem;display:grid;grid-template-columns:1
   <aside>
     <div class="reading-now-card">
       <div class="section-label">Currently Reading</div>
-      <div class="rn-book">
-        <!-- Currently reading cover -->
-        <!-- To add image: save as images/howls-moving-castle.jpg -->
-        <!-- Then change to: <img src="images/howls-moving-castle.jpg" alt="Howl's Moving Castle" class="rn-cover"> -->
-        <div class="rn-cover">Howl's Moving Castle</div>
-        <div>
-          <div class="rn-title">Howl's Moving Castle</div>
-          <div class="rn-author">Diana Wynne Jones</div>
-          <div class="progress-bar"><div class="progress-fill"></div></div>
-          <div class="progress-label">68% through</div>
+      <div class="currently-reading-list">
+
+        <!-- Currently reading covers -->
+        <!-- Save images and swap div for img: <img src="images/the-woods.jpg" alt="The Woods" class="cr-cover"> -->
+        <div class="cr-item">
+          <div class="cr-cover cr-c1">The Woods</div>
+          <div>
+            <div class="cr-title">The Woods</div>
+            <div class="cr-author">Harlan Coben</div>
+            <div class="cr-type">Book</div>
+          </div>
         </div>
+        <div class="cr-item">
+          <div class="cr-cover cr-c2">Express</div>
+          <div>
+            <div class="cr-title">Express</div>
+            <div class="cr-author"></div>
+            <div class="cr-type">Book</div>
+          </div>
+        </div>
+        <div class="cr-item">
+          <div class="cr-cover cr-c3">Witch Hat Atelier</div>
+          <div>
+            <div class="cr-title">Witch Hat Atelier</div>
+            <div class="cr-author">Kamome Shirahama</div>
+            <div class="cr-type">Manga</div>
+          </div>
+        </div>
+
       </div>
     </div>
 
     <div class="reading-stats">
-      <div class="rs-item"><div class="rs-num">13</div><div class="rs-label">Read in 2025</div></div>
-      <div class="rs-item"><div class="rs-num">4.1</div><div class="rs-label">Avg Rating</div></div>
+      <div class="rs-item"><div class="rs-num">8</div><div class="rs-label">Read in 2026</div></div>
+      <div class="rs-item"><div class="rs-num">3</div><div class="rs-label">In Progress</div></div>
+      <div class="rs-item"><div class="rs-num">4.0</div><div class="rs-label">Avg Rating</div></div>
       <div class="rs-item"><div class="rs-num">∞</div><div class="rs-label">TBR pile</div></div>
-      <div class="rs-item"><div class="rs-num">5</div><div class="rs-label">Sections</div></div>
     </div>
 
     <div class="sidebar-card">
-      <div class="section-label">Browse By</div>
-      <ul class="categories-list">
-        <li><span class="cat-name">Book Reviews</span><span class="cat-count">13</span></li>
-        <li><span class="cat-name">Film & TV</span><span class="cat-count">4</span></li>
-        <li><span class="cat-name">Anime</span><span class="cat-count">3</span></li>
-        <li><span class="cat-name">Travel</span><span class="cat-count">2</span></li>
-        <li><span class="cat-name">Shelf Rankings</span><span class="cat-count">5</span></li>
-      </ul>
-    </div>
-
-    <div class="sidebar-card">
-      <div class="section-label">Recent Reads</div>
+      <div class="section-label">Recently Read</div>
       <div class="recent-reads">
 
-        <!-- Recent read covers — save images and swap div for img the same way -->
-        <!-- e.g. <img src="images/thursday-murder-club.jpg" alt="..." class="rr-cover"> -->
+        <!-- Recent read covers -->
+        <!-- Save images and swap div for img: <img src="images/project-hail-mary.jpg" alt="Project Hail Mary" class="rr-cover"> -->
         <div class="rr-item">
           <div class="rr-cover rr-c1"></div>
-          <div><div class="rr-title">The Thursday Murder Club</div><div class="rr-author">Richard Osman</div><div class="rr-stars">★★★★★</div></div>
+          <div>
+            <div class="rr-title">Project Hail Mary</div>
+            <div class="rr-author">Andy Weir</div>
+            <div class="rr-type">Book</div>
+            <div class="rr-stars">★★★★</div>
+          </div>
         </div>
         <div class="rr-item">
           <div class="rr-cover rr-c2"></div>
-          <div><div class="rr-title">Water Moon</div><div class="rr-author">Samantha Sotto Yambao</div><div class="rr-stars">★★★★</div></div>
-        </div>
-        <div class="rr-item">
-          <div class="rr-cover rr-c3"></div>
-          <div><div class="rr-title">The Ragpicker King</div><div class="rr-author">Cassandra Clare</div><div class="rr-stars">★★★★</div></div>
-        </div>
-        <div class="rr-item">
-          <div class="rr-cover rr-c4"></div>
-          <div><div class="rr-title">Wicked</div><div class="rr-author">Gregory Maguire</div><div class="rr-stars">★★★</div></div>
+          <div>
+            <div class="rr-title">Wisteria: Wand and Sword</div>
+            <div class="rr-author">Vol. 6–12</div>
+            <div class="rr-type">Manga</div>
+            <div class="rr-stars">★★★★</div>
+          </div>
         </div>
 
       </div>
     </div>
+
+    <div class="sidebar-card">
+      <div class="section-label">Find Me Here</div>
+      <div style="display:flex;flex-direction:column;gap:0.5rem">
+        <a href="mailto:kristine@chapterclue.com" style="font-size:0.82rem;color:var(--muted);text-decoration:none">✉ kristine@chapterclue.com</a>
+        <a href="https://www.instagram.com/wintergardenblvd/" style="font-size:0.82rem;color:var(--muted);text-decoration:none">✦ Instagram</a>
+        <a href="https://www.goodreads.com/user/show/4452919" style="font-size:0.82rem;color:var(--muted);text-decoration:none">✦ Goodreads</a>
+      </div>
+    </div>
   </aside>
 </div>
-
-<section class="chronicle-section">
-  <div class="chronicle-inner">
-    <div class="section-label">The Clue Chronicle</div>
-    <div class="chronicle-grid">
-      <div class="chronicle-card"><div class="cc-icon">📖</div><div class="cc-title">Loose Pages</div><p class="cc-desc">Essays, musings, and scattered thoughts that don't fit neatly into any genre.</p><div class="cc-link">Browse →</div></div>
-      <div class="chronicle-card"><div class="cc-icon">🎌</div><div class="cc-title">Otaku Files</div><p class="cc-desc">Anime reviews, series breakdowns, and the occasional deep dive into fandom.</p><div class="cc-link">Browse →</div></div>
-      <div class="chronicle-card"><div class="cc-icon">📋</div><div class="cc-title">Shelf Rankings</div><p class="cc-desc">Opinionated lists, tier lists, and favourites across every genre and mood.</p><div class="cc-link">Browse →</div></div>
-      <div class="chronicle-card"><div class="cc-icon">🎬</div><div class="cc-title">The Reel Evidence</div><p class="cc-desc">Film and TV reviews for everything that kept me up past my bedtime.</p><div class="cc-link">Browse →</div></div>
-    </div>
-  </div>
-</section>
 
 <footer>
   <div>
@@ -349,30 +252,20 @@ footer{background:#110a20;padding:3rem 4rem;display:grid;grid-template-columns:1
       <a href="https://www.instagram.com/wintergardenblvd/" class="social-link">Instagram</a>
       <a href="https://www.goodreads.com/user/show/4452919" class="social-link">Goodreads</a>
     </div>
-    <p class="footer-copy">© 2025 Kristine M. All rights reserved.</p>
+    <p class="footer-copy">© 2026 Kristine M. All rights reserved.</p>
   </div>
   <div>
-    <div class="footer-heading">Navigate</div>
+    <div class="footer-heading">About</div>
     <ul class="footer-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#">Reader's Report</a></li>
-      <li><a href="#">The Clue Chronicle</a></li>
-      <li><a href="#">Secret Scrolls</a></li>
+      <li>Part reading journal, part curiosity cabinet. Covering books, manga, light novels, anime, film, and the occasional travel musing.</li>
     </ul>
   </div>
   <div>
     <div class="footer-heading">Say Hello</div>
     <ul class="footer-links">
-      <li><a href="mailto:kristine@chapterclue.com">kristine@chapterclue.com</a></li>
-      <li><a href="https://www.instagram.com/wintergardenblvd/">Instagram</a></li>
-      <li><a href="https://www.goodreads.com/user/show/4452919">Goodreads</a></li>
-    </ul>
-    <div class="footer-heading" style="margin-top:1.5rem">The Chronicle</div>
-    <ul class="footer-links">
-      <li><a href="#">Loose Pages</a></li>
-      <li><a href="#">Otaku Files</a></li>
-      <li><a href="#">The Reel Evidence</a></li>
-      <li><a href="#">Travel Dossier</a></li>
+      <li><a href="mailto:kristine@chapterclue.com" style="color:#6a5a8a;text-decoration:none">kristine@chapterclue.com</a></li>
+      <li><a href="https://www.instagram.com/wintergardenblvd/" style="color:#6a5a8a;text-decoration:none">Instagram</a></li>
+      <li><a href="https://www.goodreads.com/user/show/4452919" style="color:#6a5a8a;text-decoration:none">Goodreads</a></li>
     </ul>
   </div>
 </footer>
