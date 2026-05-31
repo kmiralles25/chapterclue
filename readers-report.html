@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reader's Report — Chapter & Clue</title>
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Nunito:wght@300;400;500;600&family=Italiana&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--plum:#2d1b4e;--deep:#1a0f30;--lavender:#c4b0e8;--lilac:#e8e0f7;
+--blush:#fdf5ff;--gold:#c9a84c;--gold-light:#f0dfa0;--muted:#7a6a94;
+--border:#d8cff0;--white:#ffffff;--soft:#f7f2ff;
+}
+body{background:var(--blush);color:var(--plum);font-family:'Nunito',sans-serif;overflow-x:hidden}
+
+nav{background:var(--deep);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'Italiana',serif;color:var(--gold-light);font-size:1.4rem;letter-spacing:0.08em;text-decoration:none}
+.nav-links{display:flex;gap:1.5rem;align-items:center}
+.nav-link{color:#9888b8;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;font-weight:600;transition:color 0.2s;padding:0.3rem 0}
+.nav-link:hover{color:var(--gold)}
+.nav-link.active{color:var(--gold-light);border-bottom:1px solid var(--gold)}
+
+/* PAGE HEADER */
+.page-header{background:var(--deep);padding:4rem 4rem 3.5rem;position:relative;overflow:hidden}
+.page-header-deco{position:absolute;font-family:'Cormorant Garamond',serif;font-size:clamp(8rem,14vw,14rem);color:rgba(196,176,232,0.04);bottom:-1rem;right:2rem;pointer-events:none;font-style:italic;line-height:1}
+.page-eyebrow{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem}
+.page-eyebrow::before{content:'✦';font-size:0.6rem}
+.page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);color:var(--white);line-height:1.1;font-weight:400;margin-bottom:0.75rem}
+.page-title em{font-style:italic;color:var(--lavender)}
+.page-sub{color:#7a6a9a;font-size:0.9rem;line-height:1.8;max-width:520px;font-weight:300}
+
+/* LAYOUT */
+.report-layout{padding:3.5rem 4rem;display:grid;grid-template-columns:220px 1fr;gap:3.5rem;max-width:1300px;margin:0 auto}
+
+/* YEAR SIDEBAR */
+.year-nav{position:sticky;top:80px;height:fit-content}
+.year-nav-title{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border)}
+.year-section-nav{display:flex;flex-direction:column;gap:0.5rem}
+.year-group{margin-bottom:0.5rem}
+.year-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;background:none;border:none;cursor:pointer;padding:0.6rem 0.85rem;border-radius:8px;transition:background 0.2s;font-family:'Nunito',sans-serif}
+.year-toggle:hover{background:var(--lilac)}
+.year-toggle.open{background:var(--lilac)}
+.year-toggle-label{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--plum)}
+.year-toggle-count{font-size:0.65rem;color:var(--muted);letter-spacing:0.05em}
+.year-toggle-arrow{font-size:0.65rem;color:var(--muted);transition:transform 0.2s}
+.year-toggle.open .year-toggle-arrow{transform:rotate(180deg)}
+.year-book-list{display:none;flex-direction:column;gap:0.15rem;padding:0.35rem 0 0.5rem 0.85rem}
+.year-toggle.open + .year-book-list{display:flex}
+.year-book-link{font-size:0.76rem;color:var(--muted);text-decoration:none;padding:0.25rem 0.5rem;border-radius:5px;transition:all 0.15s;line-height:1.4}
+.year-book-link:hover{color:var(--plum);background:var(--lilac)}
+
+/* REVIEWS */
+.section-label{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;display:flex;align-items:center;gap:0.75rem;font-weight:600}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.year-block{margin-bottom:4rem}
+.year-heading{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--lavender);font-weight:600;margin-bottom:0.25rem;line-height:1}
+.year-rule{height:1px;background:linear-gradient(to right, var(--lavender), transparent);margin-bottom:2.5rem;opacity:0.4}
+
+.post-card{display:grid;grid-template-columns:100px 1fr;gap:1.25rem;padding-bottom:2rem;margin-bottom:2rem;border-bottom:1px solid var(--border)}
+.post-card:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.book-cover{width:100px;height:140px;border-radius:8px;object-fit:cover;display:block;flex-shrink:0}
+
+.post-meta{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;flex-wrap:wrap}
+.post-category{font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--plum);background:var(--lilac);padding:0.2rem 0.65rem;border-radius:20px;font-weight:600}
+.post-date{font-size:0.7rem;color:var(--muted)}
+.post-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--plum);line-height:1.3;margin-bottom:0.4rem;font-weight:600}
+.post-excerpt{font-size:0.83rem;color:var(--muted);line-height:1.7;font-weight:300}
+.post-rating{display:flex;gap:2px;margin-bottom:0.5rem}
+.star{color:var(--gold);font-size:0.85rem}
+.star.empty{color:var(--border)}
+.star.half{position:relative;display:inline-block;color:var(--border)}
+.star.half::before{content:'★';position:absolute;left:0;top:0;width:50%;overflow:hidden;color:var(--gold)}
+
+/* FOOTER */
+footer{background:#110a20;padding:3rem 4rem;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:3rem}
+.footer-logo{font-family:'Italiana',serif;color:var(--gold-light);font-size:1.4rem;display:block;margin-bottom:0.75rem}
+.footer-tagline{font-size:0.83rem;color:#4a3a6a;font-style:italic;line-height:1.7;font-family:'Cormorant Garamond',serif}
+.footer-heading{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:#4a3a6a;margin-bottom:1rem;font-weight:600}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+.footer-copy{color:#2d2048;font-size:0.68rem;margin-top:1rem}
+.social-links{display:flex;gap:0.6rem;margin-top:1rem;flex-wrap:wrap}
+.social-link{padding:0.35rem 0.9rem;border:1px solid #3d2d68;border-radius:20px;color:#6a5a8a;font-size:0.7rem;text-decoration:none;font-weight:600;transition:all 0.2s}
+.social-link:hover{border-color:var(--gold);color:var(--gold)}
+
+.footer-form{display:flex;flex-direction:column;gap:0.6rem;margin-top:0.5rem}
+.footer-form input,.footer-form textarea{width:100%;padding:0.5rem 0.7rem;border:1px solid #2d2048;border-radius:6px;font-family:'Nunito',sans-serif;font-size:0.75rem;color:#9888b8;background:#1a1030;outline:none;resize:none;transition:border-color 0.2s}
+.footer-form input:focus,.footer-form textarea:focus{border-color:#3d2d68}
+.footer-form input::placeholder,.footer-form textarea::placeholder{color:#3d2d68}
+.footer-form textarea{min-height:70px}
+.footer-form-btn{background:#3d2d68;color:var(--gold-light);border:none;border-radius:6px;padding:0.5rem 1rem;font-family:'Nunito',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;width:100%}
+.footer-form-btn:hover{background:#4d3d78}
+.footer-form-success{font-size:0.72rem;color:#7ab87a;text-align:center;padding:0.4rem;display:none}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .report-layout{grid-template-columns:1fr;padding:2rem 1.25rem;gap:2rem}
+  .year-nav{position:static}
+  .year-section-nav{flex-direction:row;flex-wrap:wrap;gap:0.5rem}
+  .year-group{margin-bottom:0}
+  .year-toggle{padding:0.4rem 0.75rem}
+  .year-book-list{display:none!important}
+}
+@media (max-width: 768px) {
+  .page-header{padding:3rem 1.5rem 2.5rem}
+  footer{grid-template-columns:1fr;padding:2.5rem 1.5rem;gap:2rem;text-align:center}
+  .social-links{justify-content:center}
+  .post-card{grid-template-columns:80px 1fr;gap:1rem}
+  .book-cover{width:80px;height:112px}
+  .nav-links{gap:1rem}
+  .nav-link{font-size:0.68rem}
+}
+@media (max-width: 480px) {
+  .post-card{grid-template-columns:1fr}
+  .book-cover{width:100%;height:180px;border-radius:10px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo" style="text-decoration:none">Chapter & Clue</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="readers-report.html" class="nav-link active">Reader's Report</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-deco">Report</div>
+  <div class="page-eyebrow">All Reviews</div>
+  <h1 class="page-title">Reader's <em>Report</em></h1>
+  <p class="page-sub">Every book I've read, rated, and reflected on — organized by year, from most recent to oldest. A complete record of the reading adventures.</p>
+</div>
+
+<div class="report-layout">
+
+  <!-- YEAR NAVIGATION SIDEBAR -->
+  <aside class="year-nav">
+    <div class="year-nav-title">Browse by Year</div>
+    <div class="year-section-nav">
+
+      <div class="year-group">
+        <button class="year-toggle open" onclick="toggleYear(this)">
+          <span class="year-toggle-label">2026</span>
+          <span>
+            <span class="year-toggle-count">4 books</span>
+            <span class="year-toggle-arrow">▼</span>
+          </span>
+        </button>
+        <div class="year-book-list">
+          <a href="#apothecary-vol15" class="year-book-link">The Apothecary Diaries, Vol. 15</a>
+          <a href="#wisteria" class="year-book-link">Wisteria: Wand & Sword</a>
+          <a href="#the-woods" class="year-book-link">The Woods</a>
+          <a href="#project-hail-mary" class="year-book-link">Project Hail Mary</a>
+        </div>
+      </div>
+
+      <!-- Add future years here — copy the year-group block above -->
+
+    </div>
+  </aside>
+
+  <!-- REVIEWS MAIN CONTENT -->
+  <main>
+
+    <!-- ══ 2026 ══ -->
+    <div class="year-block" id="year-2026">
+      <div class="year-heading">2026</div>
+      <div class="year-rule"></div>
+
+      <!-- The Apothecary Diaries Vol. 15 -->
+      <div class="post-card" id="apothecary-vol15">
+        <img src="images/apothecary-diaries-vol15.jpg" alt="The Apothecary Diaries Vol. 15" class="book-cover">
+        <div>
+          <div class="post-meta"><span class="post-category">Light Novel</span><span class="post-date">May 31, 2026</span></div>
+          <h2 class="post-title">The Apothecary Diaries, Vol. 15 — Natsu Hyuuga</h2>
+          <div class="post-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star half">★</span></div>
+          <p class="post-excerpt">This volume dives deep into historical medical practices and surgical procedures, written in a way that even readers without a medical background can follow along. The surgery sequence is incredibly tense — I felt every complication right along with it. What I loved is how the story shifts between funny and heartbreaking almost without warning. Some of the character interactions had me actually laughing out loud, and then other parts just broke my heart — Ah Duo's story especially. And even though Jinshi and Maomao don't share many scenes together in this volume, the way he loves and values her still comes through so strongly. My heart was so full by the end.</p>
+        </div>
+      </div>
+
+      <!-- Wisteria -->
+      <div class="post-card" id="wisteria">
+        <img src="images/wisteria-wand-and-sword.jpg" alt="Wisteria: Wand and Sword" class="book-cover">
+        <div>
+          <div class="post-meta"><span class="post-category">Manga</span><span class="post-date">May 30, 2026</span></div>
+          <h2 class="post-title">Wisteria: Wand and Sword</h2>
+          <div class="post-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span></div>
+          <p class="post-excerpt">I came for the anime and stayed for everything else. When the story's weekly pace became unbearable, I turned to the manga — and promptly caught up to the latest volume, which means I'm back to waiting all over again. The premise hooked me immediately: a boy with zero magical ability navigating a world that prizes magic above all else. What sets it apart is that he doesn't sulk about it — he channels his exceptional swordsmanship toward a singular, ambitious goal: reaching Elfaria, a Magia Vander of the highest order. The art is stunning, the world-building is rich, and the story keeps you rooting for him every step of the way.</p>
+        </div>
+      </div>
+
+      <!-- The Woods -->
+      <div class="post-card" id="the-woods">
+        <img src="images/the-woods.jpg" alt="The Woods" class="book-cover">
+        <div>
+          <div class="post-meta"><span class="post-category">Book</span><span class="post-date">May 30, 2026</span></div>
+          <h2 class="post-title">The Woods — Harlan Coben</h2>
+          <div class="post-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span></div>
+          <p class="post-excerpt">The Woods delivers exactly what you'd hope from a thriller — a prosecutor unraveling the mystery of his sister's fate, piecing together clues that pull you deeper with every chapter. Coben builds genuine tension throughout, and the procedural elements feel grounded and compelling. That said, seasoned readers of the genre may find the red herrings a little transparent, and a few character motivations don't quite hold up under scrutiny. These are small cracks, but noticeable ones. None of that, however, prepares you for the ending. It lands like a gut punch — the kind you genuinely don't see coming, and that lingers long after you've closed the book, making you wonder what might have been. Flaws and all, The Woods is a thoroughly satisfying read.</p>
+        </div>
+      </div>
+
+      <!-- Project Hail Mary -->
+      <div class="post-card" id="project-hail-mary">
+        <img src="images/project-hail-mary.jpg" alt="Project Hail Mary" class="book-cover">
+        <div>
+          <div class="post-meta"><span class="post-category">Book</span><span class="post-date">May 30, 2026</span></div>
+          <h2 class="post-title">Project Hail Mary — Andy Weir</h2>
+          <div class="post-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span></div>
+          <p class="post-excerpt">The movie brought me to the book, but the book made me fall in love. Andy Weir has a gift for making complex science feel accessible and thrilling — and when you pair that with Ray Porter's audiobook narration, it becomes something else entirely. Porter is hands down the best narrator I've encountered; he brings every character and concept to life in a way that makes even the densest scientific moments a pleasure to follow. The book also fills in details the movie couldn't, which made the whole experience richer. A genuine page-turner that works whether you've seen the film or not.</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- ══ End 2026 ══ -->
+
+    <!-- When a new year begins, add a new year-block here:
+    <div class="year-block" id="year-2025">
+      <div class="year-heading">2025</div>
+      <div class="year-rule"></div>
+      ...post-cards...
+    </div>
+    -->
+
+  </main>
+</div>
+
+<footer>
+  <div>
+    <span class="footer-logo">Chapter & Clue</span>
+    <p class="footer-tagline">Unraveling stories across every genre — one chapter at a time.</p>
+    <p class="footer-copy">© 2026 Kristine M. All rights reserved.</p>
+  </div>
+  <div>
+    <div class="footer-heading">About</div>
+    <p style="font-size:0.82rem;color:#6a5a8a;line-height:1.7">Books, manga, anime, film, and the occasional unhinged ranking. No rules, just vibes — and a very long TBR list.</p>
+    <div style="margin-top:1rem">
+      <div class="footer-heading">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="index.html" style="color:#6a5a8a;text-decoration:none;font-size:0.82rem">Home</a></li>
+        <li><a href="readers-report.html" style="color:#6a5a8a;text-decoration:none;font-size:0.82rem">Reader's Report</a></li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <div class="footer-heading">Say Hello</div>
+    <form class="footer-form" action="https://formspree.io/f/xaqkzpov" method="POST">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" placeholder="Drop me a message…" required></textarea>
+      <button type="submit" class="footer-form-btn">Send Message</button>
+    </form>
+  </div>
+</footer>
+
+<script>
+function toggleYear(btn) {
+  btn.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>

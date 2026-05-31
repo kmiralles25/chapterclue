@@ -17,8 +17,12 @@
 }
 body{background:var(--blush);color:var(--plum);font-family:'Nunito',sans-serif;overflow-x:hidden}
 
-nav{background:var(--deep);padding:0 1.5rem;display:flex;align-items:center;justify-content:center;height:60px;position:sticky;top:0;z-index:100}
+nav{background:var(--deep);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
 .nav-logo{font-family:'Italiana',serif;color:var(--gold-light);font-size:1.4rem;letter-spacing:0.08em}
+.nav-links{display:flex;gap:1.5rem;align-items:center}
+.nav-link{color:#9888b8;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;font-weight:600;transition:color 0.2s;padding:0.3rem 0}
+.nav-link:hover{color:var(--gold)}
+.nav-link.active{color:var(--gold-light);border-bottom:1px solid var(--gold)}
 
 /* HERO */
 .hero{background:var(--deep);min-height:88vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
@@ -44,6 +48,11 @@ nav{background:var(--deep);padding:0 1.5rem;display:flex;align-items:center;just
 .section-label{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;display:flex;align-items:center;gap:0.75rem;font-weight:600}
 .section-label::after{content:'';flex:1;height:1px;background:var(--border)}
 
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem}
+.section-header .section-label{margin-bottom:0;flex:1}
+.view-all-link{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:600;white-space:nowrap;padding:0.35rem 0.85rem;border:1px solid var(--gold);border-radius:20px;transition:all 0.2s;margin-left:1rem}
+.view-all-link:hover{background:var(--gold);color:var(--deep)}
+
 .post-card{display:grid;grid-template-columns:100px 1fr;gap:1.25rem;padding-bottom:2rem;margin-bottom:2rem;border-bottom:1px solid var(--border)}
 .post-card:last-of-type{border-bottom:none}
 .book-cover{width:100px;height:140px;border-radius:8px;object-fit:cover;display:block;flex-shrink:0}
@@ -56,6 +65,8 @@ nav{background:var(--deep);padding:0 1.5rem;display:flex;align-items:center;just
 .post-rating{display:flex;gap:2px;margin-bottom:0.5rem}
 .star{color:var(--gold);font-size:0.85rem}
 .star.empty{color:var(--border)}
+.star.half{position:relative;display:inline-block;color:var(--border)}
+.star.half::before{content:'★';position:absolute;left:0;top:0;width:50%;overflow:hidden;color:var(--gold)}
 
 .quote-block{background:var(--lilac);border-left:3px solid var(--gold);padding:2rem;margin:2.5rem 0;border-radius:0 12px 12px 0}
 .quote-text{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--plum);line-height:1.75;margin-bottom:0.6rem}
@@ -89,6 +100,15 @@ nav{background:var(--deep);padding:0 1.5rem;display:flex;align-items:center;just
 .rr-type{font-size:0.6rem;color:var(--gold);font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
 .rr-stars{color:var(--gold);font-size:0.65rem;margin-top:0.15rem}
 
+/* CONTACT FORM */
+.contact-form{display:flex;flex-direction:column;gap:0.75rem}
+.contact-form input,.contact-form textarea{width:100%;padding:0.6rem 0.8rem;border:1px solid var(--border);border-radius:8px;font-family:'Nunito',sans-serif;font-size:0.8rem;color:var(--plum);background:var(--soft);outline:none;resize:none;transition:border-color 0.2s}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--lavender)}
+.contact-form textarea{min-height:80px}
+.contact-submit{background:var(--plum);color:var(--gold-light);border:none;border-radius:8px;padding:0.55rem 1rem;font-family:'Nunito',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;width:100%}
+.contact-submit:hover{background:#3d2d68}
+.contact-success{font-size:0.78rem;color:#5a8a5a;text-align:center;padding:0.5rem;display:none}
+
 /* FOOTER */
 footer{background:#110a20;padding:3rem 4rem;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:3rem}
 .footer-logo{font-family:'Italiana',serif;color:var(--gold-light);font-size:1.4rem;display:block;margin-bottom:0.75rem}
@@ -100,10 +120,18 @@ footer{background:#110a20;padding:3rem 4rem;display:grid;grid-template-columns:1
 .social-link{padding:0.35rem 0.9rem;border:1px solid #3d2d68;border-radius:20px;color:#6a5a8a;font-size:0.7rem;text-decoration:none;font-weight:600;transition:all 0.2s}
 .social-link:hover{border-color:var(--gold);color:var(--gold)}
 
+/* FOOTER CONTACT FORM */
+.footer-form{display:flex;flex-direction:column;gap:0.6rem;margin-top:0.5rem}
+.footer-form input,.footer-form textarea{width:100%;padding:0.5rem 0.7rem;border:1px solid #2d2048;border-radius:6px;font-family:'Nunito',sans-serif;font-size:0.75rem;color:#9888b8;background:#1a1030;outline:none;resize:none;transition:border-color 0.2s}
+.footer-form input:focus,.footer-form textarea:focus{border-color:#3d2d68}
+.footer-form input::placeholder,.footer-form textarea::placeholder{color:#3d2d68}
+.footer-form textarea{min-height:70px}
+.footer-form-btn{background:#3d2d68;color:var(--gold-light);border:none;border-radius:6px;padding:0.5rem 1rem;font-family:'Nunito',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;width:100%}
+.footer-form-btn:hover{background:#4d3d78}
+.footer-form-success{font-size:0.72rem;color:#7ab87a;text-align:center;padding:0.4rem;display:none}
+
 /* ── MOBILE RESPONSIVE ── */
 @media (max-width: 768px) {
-
-  /* Hero stacks vertically */
   .hero{grid-template-columns:1fr;min-height:auto}
   .hero-left{padding:3rem 1.5rem 2rem;text-align:center;align-items:center}
   .hero-eyebrow{justify-content:center}
@@ -111,29 +139,13 @@ footer{background:#110a20;padding:3rem 4rem;display:grid;grid-template-columns:1
   .hero-right-inner{padding:2rem 1.5rem 3rem;align-items:center;gap:1.5rem}
   .stat-row{justify-content:center;gap:2rem}
   .featured-card{max-width:100%}
-
-  /* Main grid stacks — reviews first, sidebar below */
-  .main-grid{
-    grid-template-columns:1fr;
-    padding:2rem 1.25rem;
-    gap:2rem;
-  }
-
-  /* Post cards — image on top on very small screens */
-  .post-card{
-    grid-template-columns:80px 1fr;
-    gap:1rem;
-  }
+  .main-grid{grid-template-columns:1fr;padding:2rem 1.25rem;gap:2rem}
+  .post-card{grid-template-columns:80px 1fr;gap:1rem}
   .book-cover{width:80px;height:112px}
-
-  /* Footer stacks */
-  footer{
-    grid-template-columns:1fr;
-    padding:2.5rem 1.5rem;
-    gap:2rem;
-    text-align:center;
-  }
+  footer{grid-template-columns:1fr;padding:2.5rem 1.5rem;gap:2rem;text-align:center}
   .social-links{justify-content:center}
+  .nav-links{gap:1rem}
+  .nav-link{font-size:0.68rem}
 }
 
 @media (max-width: 480px) {
@@ -149,6 +161,10 @@ footer{background:#110a20;padding:3rem 4rem;display:grid;grid-template-columns:1
 
 <nav>
   <span class="nav-logo">Chapter & Clue</span>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link active">Home</a>
+    <a href="readers-report.html" class="nav-link">Reader's Report</a>
+  </div>
 </nav>
 
 <section class="hero">
@@ -160,46 +176,52 @@ footer{background:#110a20;padding:3rem 4rem;display:grid;grid-template-columns:1
   </div>
   <div class="hero-right-inner">
     <div class="stat-row">
-      <div class="stat"><div class="stat-num">9</div><div class="stat-label">Read in '26</div></div>
-      <div class="stat"><div class="stat-num">5</div><div class="stat-label">Reading Now</div></div>
+      <div class="stat"><div class="stat-num">10</div><div class="stat-label">Read in '26</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Reading Now</div></div>
       <div class="stat"><div class="stat-num">∞</div><div class="stat-label">TBR Pile</div></div>
     </div>
     <div class="featured-card">
       <div class="featured-ribbon">✦ Latest Review</div>
-      <div class="featured-title">The Woods</div>
-      <p class="featured-excerpt">Harlan Coben delivers a gut-punch of a thriller. The ending lands like something you genuinely don't see coming — the kind that lingers long after you've closed the book. Flaws and all, a thoroughly satisfying read.</p>
+      <div class="featured-title">The Apothecary Diaries, Vol. 15</div>
+      <p class="featured-excerpt">Dives deep into historical medical practices with a story that shifts between funny and heartbreaking almost without warning. Ah Duo's arc especially hit hard — and Jinshi's quiet devotion still comes through so strongly even without many scenes together.</p>
     </div>
   </div>
 </section>
 
 <div class="main-grid">
   <main>
-    <div class="section-label">Recent Reviews</div>
+    <div class="section-header">
+      <div class="section-label">Recent Reviews</div>
+      <a href="readers-report.html" class="view-all-link">View All ✦</a>
+    </div>
 
+    <!-- REVIEW 1: The Apothecary Diaries Vol. 15 — May 31, 2026 -->
     <div class="post-card">
-      <img src="images/project-hail-mary.jpg" alt="Project Hail Mary" class="book-cover">
+      <img src="images/apothecary-diaries-vol15.jpg" alt="The Apothecary Diaries Vol. 15" class="book-cover">
       <div>
-        <div class="post-meta"><span class="post-category">Book</span><span class="post-date">2026</span></div>
-        <h2 class="post-title">Project Hail Mary — Andy Weir</h2>
-        <div class="post-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span></div>
-        <p class="post-excerpt">The movie brought me to the book, but the book made me fall in love. Andy Weir has a gift for making complex science feel accessible and thrilling — and when you pair that with Ray Porter's audiobook narration, it becomes something else entirely. Porter is hands down the best narrator I've encountered; he brings every character and concept to life in a way that makes even the densest scientific moments a pleasure to follow. The book also fills in details the movie couldn't, which made the whole experience richer. A genuine page-turner that works whether you've seen the film or not.</p>
+        <div class="post-meta"><span class="post-category">Light Novel</span><span class="post-date">May 31, 2026</span></div>
+        <h2 class="post-title">The Apothecary Diaries, Vol. 15 — Natsu Hyuuga</h2>
+        <div class="post-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star half">★</span></div>
+        <p class="post-excerpt">This volume dives deep into historical medical practices and surgical procedures, written in a way that even readers without a medical background can follow along. The surgery sequence is incredibly tense — I felt every complication right along with it. What I loved is how the story shifts between funny and heartbreaking almost without warning. Some of the character interactions had me actually laughing out loud, and then other parts just broke my heart — Ah Duo's story especially. And even though Jinshi and Maomao don't share many scenes together in this volume, the way he loves and values her still comes through so strongly. My heart was so full by the end.</p>
       </div>
     </div>
 
+    <!-- REVIEW 2: Wisteria — May 30, 2026 -->
     <div class="post-card">
       <img src="images/wisteria-wand-and-sword.jpg" alt="Wisteria: Wand and Sword" class="book-cover">
       <div>
-        <div class="post-meta"><span class="post-category">Manga</span><span class="post-date">2026</span></div>
+        <div class="post-meta"><span class="post-category">Manga</span><span class="post-date">May 30, 2026</span></div>
         <h2 class="post-title">Wisteria: Wand and Sword</h2>
         <div class="post-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span></div>
         <p class="post-excerpt">I came for the anime and stayed for everything else. When the story's weekly pace became unbearable, I turned to the manga — and promptly caught up to the latest volume, which means I'm back to waiting all over again. The premise hooked me immediately: a boy with zero magical ability navigating a world that prizes magic above all else. What sets it apart is that he doesn't sulk about it — he channels his exceptional swordsmanship toward a singular, ambitious goal: reaching Elfaria, a Magia Vander of the highest order. The art is stunning, the world-building is rich, and the story keeps you rooting for him every step of the way.</p>
       </div>
     </div>
 
+    <!-- REVIEW 3: The Woods — May 30, 2026 -->
     <div class="post-card">
       <img src="images/the-woods.jpg" alt="The Woods" class="book-cover">
       <div>
-        <div class="post-meta"><span class="post-category">Book</span><span class="post-date">2026</span></div>
+        <div class="post-meta"><span class="post-category">Book</span><span class="post-date">May 30, 2026</span></div>
         <h2 class="post-title">The Woods — Harlan Coben</h2>
         <div class="post-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span></div>
         <p class="post-excerpt">The Woods delivers exactly what you'd hope from a thriller — a prosecutor unraveling the mystery of his sister's fate, piecing together clues that pull you deeper with every chapter. Coben builds genuine tension throughout, and the procedural elements feel grounded and compelling. That said, seasoned readers of the genre may find the red herrings a little transparent, and a few character motivations don't quite hold up under scrutiny. These are small cracks, but noticeable ones. None of that, however, prepares you for the ending. It lands like a gut punch — the kind you genuinely don't see coming, and that lingers long after you've closed the book, making you wonder what might have been. Flaws and all, The Woods is a thoroughly satisfying read.</p>
@@ -241,14 +263,6 @@ footer{background:#110a20;padding:3rem 4rem;display:grid;grid-template-columns:1
           </div>
         </div>
         <div class="cr-item">
-          <img src="images/apothecary-diaries-vol15.jpg" alt="The Apothecary Diaries Vol. 15" class="cr-cover">
-          <div>
-            <div class="cr-title">The Apothecary Diaries, Vol. 15</div>
-            <div class="cr-author">Natsu Hyuuga</div>
-            <div class="cr-type">Light Novel</div>
-          </div>
-        </div>
-        <div class="cr-item">
           <img src="images/apothecary-diaries-vol16.jpg" alt="The Apothecary Diaries Vol. 16" class="cr-cover">
           <div>
             <div class="cr-title">The Apothecary Diaries, Vol. 16</div>
@@ -260,9 +274,9 @@ footer{background:#110a20;padding:3rem 4rem;display:grid;grid-template-columns:1
     </div>
 
     <div class="reading-stats">
-      <div class="rs-item"><div class="rs-num">9</div><div class="rs-label">Read in 2026</div></div>
-      <div class="rs-item"><div class="rs-num">5</div><div class="rs-label">In Progress</div></div>
-      <div class="rs-item"><div class="rs-num">4.0</div><div class="rs-label">Avg Rating</div></div>
+      <div class="rs-item"><div class="rs-num">10</div><div class="rs-label">Read in 2026</div></div>
+      <div class="rs-item"><div class="rs-num">4</div><div class="rs-label">In Progress</div></div>
+      <div class="rs-item"><div class="rs-num">4.1</div><div class="rs-label">Avg Rating</div></div>
       <div class="rs-item"><div class="rs-num">∞</div><div class="rs-label">TBR pile</div></div>
     </div>
 
@@ -270,21 +284,12 @@ footer{background:#110a20;padding:3rem 4rem;display:grid;grid-template-columns:1
       <div class="section-label">Recently Read</div>
       <div class="recent-reads">
         <div class="rr-item">
-          <img src="images/the-woods.jpg" alt="The Woods" class="rr-cover">
+          <img src="images/apothecary-diaries-vol15.jpg" alt="The Apothecary Diaries Vol. 15" class="rr-cover">
           <div>
-            <div class="rr-title">The Woods</div>
-            <div class="rr-author">Harlan Coben</div>
-            <div class="rr-type">Book</div>
-            <div class="rr-stars">★★★★</div>
-          </div>
-        </div>
-        <div class="rr-item">
-          <img src="images/project-hail-mary.jpg" alt="Project Hail Mary" class="rr-cover">
-          <div>
-            <div class="rr-title">Project Hail Mary</div>
-            <div class="rr-author">Andy Weir</div>
-            <div class="rr-type">Book</div>
-            <div class="rr-stars">★★★★</div>
+            <div class="rr-title">The Apothecary Diaries, Vol. 15</div>
+            <div class="rr-author">Natsu Hyuuga</div>
+            <div class="rr-type">Light Novel</div>
+            <div class="rr-stars">★★★★½</div>
           </div>
         </div>
         <div class="rr-item">
@@ -293,6 +298,15 @@ footer{background:#110a20;padding:3rem 4rem;display:grid;grid-template-columns:1
             <div class="rr-title">Wisteria: Wand and Sword</div>
             <div class="rr-author">Vol. 6–12</div>
             <div class="rr-type">Manga</div>
+            <div class="rr-stars">★★★★</div>
+          </div>
+        </div>
+        <div class="rr-item">
+          <img src="images/the-woods.jpg" alt="The Woods" class="rr-cover">
+          <div>
+            <div class="rr-title">The Woods</div>
+            <div class="rr-author">Harlan Coben</div>
+            <div class="rr-type">Book</div>
             <div class="rr-stars">★★★★</div>
           </div>
         </div>
@@ -314,25 +328,27 @@ footer{background:#110a20;padding:3rem 4rem;display:grid;grid-template-columns:1
   <div>
     <span class="footer-logo">Chapter & Clue</span>
     <p class="footer-tagline">Unraveling stories across every genre — one chapter at a time.</p>
-    <div class="social-links">
-      <a href="https://www.instagram.com/wintergardenblvd/" class="social-link">Instagram</a>
-      <a href="https://www.goodreads.com/user/show/4452919" class="social-link">Goodreads</a>
-    </div>
     <p class="footer-copy">© 2026 Kristine M. All rights reserved.</p>
   </div>
   <div>
     <div class="footer-heading">About</div>
-    <ul class="footer-links">
-      <li style="font-size:0.82rem;color:#6a5a8a">Books, manga, anime, film, and the occasional unhinged ranking. No rules, just vibes — and a very long TBR list.</li>
-    </ul>
+    <p style="font-size:0.82rem;color:#6a5a8a;line-height:1.7">Books, manga, anime, film, and the occasional unhinged ranking. No rules, just vibes — and a very long TBR list.</p>
+    <div style="margin-top:1rem">
+      <div class="footer-heading">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="index.html" style="color:#6a5a8a;text-decoration:none;font-size:0.82rem">Home</a></li>
+        <li><a href="readers-report.html" style="color:#6a5a8a;text-decoration:none;font-size:0.82rem">Reader's Report</a></li>
+      </ul>
+    </div>
   </div>
   <div>
     <div class="footer-heading">Say Hello</div>
-    <ul class="footer-links">
-      <li><a href="mailto:kristine@chapterclue.com" style="color:#6a5a8a;text-decoration:none">kristine@chapterclue.com</a></li>
-      <li><a href="https://www.instagram.com/wintergardenblvd/" style="color:#6a5a8a;text-decoration:none">Instagram</a></li>
-      <li><a href="https://www.goodreads.com/user/show/4452919" style="color:#6a5a8a;text-decoration:none">Goodreads</a></li>
-    </ul>
+    <form class="footer-form" action="https://formspree.io/f/xaqkzpov" method="POST">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" placeholder="Drop me a message…" required></textarea>
+      <button type="submit" class="footer-form-btn">Send Message</button>
+    </form>
   </div>
 </footer>
 
