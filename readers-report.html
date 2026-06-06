@@ -97,6 +97,18 @@ footer{background:#2e2040;padding:3rem 4rem;display:grid;grid-template-columns:1
 .footer-form-btn:hover{background:#c97a8a}
 .footer-form-success{font-size:0.72rem;color:#7ab87a;text-align:center;padding:0.4rem;display:none}
 
+
+/* SEARCH */
+.search-wrap{margin-bottom:2rem}
+.search-box{width:100%;padding:0.75rem 1rem 0.75rem 2.75rem;border:1.5px solid var(--azur);border-radius:30px;font-family:'Nunito',sans-serif;font-size:0.88rem;color:var(--plum);background:var(--white);outline:none;transition:border-color 0.2s;box-shadow:0 2px 8px rgba(125,173,219,0.12)}
+.search-box:focus{border-color:var(--viridian);box-shadow:0 2px 12px rgba(103,159,158,0.18)}
+.search-box::placeholder{color:#c4b8cc}
+.search-wrap-inner{position:relative}
+.search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--azur);font-size:0.9rem;pointer-events:none}
+.no-results{display:none;text-align:center;padding:3rem 1rem;color:var(--muted);font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic}
+.post-card.hidden{display:none}
+.year-block.hidden{display:none}
+
 /* MOBILE */
 @media (max-width: 900px) {
   .report-layout{grid-template-columns:1fr;padding:2rem 1.25rem;gap:2rem}
@@ -170,6 +182,14 @@ footer{background:#2e2040;padding:3rem 4rem;display:grid;grid-template-columns:1
 
   <!-- REVIEWS MAIN CONTENT -->
   <main>
+
+    <div class="search-wrap">
+      <div class="search-wrap-inner">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="search-box" id="reviewSearch" placeholder="Search by title, author, or category…" oninput="filterReviews(this.value)">
+      </div>
+    </div>
+    <div class="no-results" id="noResults">No reviews found for that search. ✦</div>
 
     <!-- ══ 2026 ══ -->
     <div class="year-block" id="year-2026">
@@ -287,6 +307,38 @@ footer{background:#2e2040;padding:3rem 4rem;display:grid;grid-template-columns:1
 <script>
 function toggleYear(btn) {
   btn.classList.toggle('open');
+}
+</script>
+
+
+<script>
+function filterReviews(query) {
+  const q = query.toLowerCase().trim();
+  const cards = document.querySelectorAll('.post-card');
+  const yearBlocks = document.querySelectorAll('.year-block');
+  let anyVisible = false;
+
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+    if (!q || text.includes(q)) {
+      card.classList.remove('hidden');
+      anyVisible = true;
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+
+  // Hide year blocks if all their cards are hidden
+  yearBlocks.forEach(block => {
+    const visibleCards = block.querySelectorAll('.post-card:not(.hidden)');
+    if (visibleCards.length === 0 && q) {
+      block.classList.add('hidden');
+    } else {
+      block.classList.remove('hidden');
+    }
+  });
+
+  document.getElementById('noResults').style.display = anyVisible || !q ? 'none' : 'block';
 }
 </script>
 
