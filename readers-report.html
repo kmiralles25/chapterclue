@@ -49,7 +49,10 @@ nav{background:#3d2d4e;padding:0 1.5rem;display:flex;align-items:center;justify-
 .year-toggle-count{font-size:0.65rem;color:var(--muted);letter-spacing:0.05em}
 .year-toggle-arrow{font-size:0.65rem;color:var(--muted);transition:transform 0.2s}
 .year-toggle.open .year-toggle-arrow{transform:rotate(180deg)}
-.year-book-list{display:none;flex-direction:column;gap:0.15rem;padding:0.35rem 0 0.5rem 0.85rem}
+.year-book-list{display:none;flex-direction:column;gap:0.15rem;padding:0.35rem 0 0.5rem 0.85rem;max-height:260px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#c4b8cc #f5eef8}
+.year-book-list::-webkit-scrollbar{width:3px}
+.year-book-list::-webkit-scrollbar-track{background:#f5eef8;border-radius:3px}
+.year-book-list::-webkit-scrollbar-thumb{background:#c4b8cc;border-radius:3px}
 .year-toggle.open + .year-book-list{display:flex}
 .year-book-link{font-size:0.76rem;color:var(--muted);text-decoration:none;padding:0.25rem 0.5rem;border-radius:5px;transition:all 0.15s;line-height:1.4}
 .year-book-link:hover{color:var(--deep);background:var(--sandstone)}
